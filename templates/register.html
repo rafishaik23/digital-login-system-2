@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>User Registration</h1>
+
+    {% if error %}
+    <p class="message">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Gender</label>
+
+        <div>
+            <input type="radio" name="gender" value="Male" required>
+            Male
+
+            <input type="radio" name="gender" value="Female">
+            Female
+        </div>
+
+        <label>Contact (Optional)</label>
+        <input type="text" name="contact">
+
+        <label>Address</label>
+        <textarea name="address" required></textarea>
+
+        <label>Qualification</label>
+
+        <select name="qualification" required>
+
+            <option value="">Select Qualification</option>
+            <option>School</option>
+            <option>Diploma</option>
+            <option>B.Tech</option>
+            <option>M.Tech</option>
+            <option>Degree</option>
+            <option>Other</option>
+
+        </select>
+
+        <label>Purpose</label>
+        <textarea name="purpose" required></textarea>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p>
+        Already registered?
+        <a href="/login">Login here</a>
+    </p>
+
+</div>
+
+</body>
+
+</html>

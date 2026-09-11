@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Digital Logbook</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Digital Logbook</h1>
+
+    <table>
+
+        <tr>
+            <th>Login Time</th>
+            <th>Logout Time</th>
+            <th>Status</th>
+        </tr>
+
+        {% for log in logs %}
+
+        <tr>
+
+            <td>
+                {{ log["login_time"] }}
+            </td>
+
+            <td>
+                {{ log["logout_time"] or "-" }}
+            </td>
+
+            <td>
+
+                {% if log["logout_time"] %}
+                    Logged Out
+                {% else %}
+                    Active
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard">
+        <button>Back to Dashboard</button>
+    </a>
+
+</div>
+
+</body>
+
+</html>

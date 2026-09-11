@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="form-container">
+    <h1>User Check-in</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="checkin_id">Check-in ID</label>
+        <input
+            type="text"
+            id="checkin_id"
+            name="checkin_id"
+            placeholder="Example: USR-12AB34CD"
+            required
+        >
+
+        <label for="purpose">Purpose</label>
+        <input
+            type="text"
+            id="purpose"
+            name="purpose"
+            placeholder="Enter purpose of visit"
+            required
+        >
+
+        <button type="submit">Check In</button>
+    </form>
+
+    <p>
+        New user?
+        <a href="/register">Register here</a>
+    </p>
+</div>
+</body>
+
+</html>

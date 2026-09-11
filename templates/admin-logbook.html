@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Logbook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>All User Log Entries</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Check-in ID</th>
+                    <th>User Name</th>
+                    <th>Login Time</th>
+                    <th>Logout Time</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log["id"] }}</td>
+                    <td>{{ log["checkin_id"] }}</td>
+                    <td>{{ log["name"] }}</td>
+                    <td>{{ log["login_time"] }}</td>
+                    <td>{{ log["logout_time"] or 'Still logged in' }}</td>
+                    <td>{{ log["purpose"] or 'N/A' }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">No log entries found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><a href="/admin-dashboard">Back to Admin Dashboard</a></p>
+    </div>
+</body>
+</html>

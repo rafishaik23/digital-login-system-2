@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registered Users</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Check-in ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user["id"] }}</td>
+                    <td>{{ user["checkin_id"] }}</td>
+                    <td>{{ user["name"] }}</td>
+                    <td>{{ user["age"] }}</td>
+                    <td>{{ user["gender"] }}</td>
+                    <td>{{ user["email"] }}</td>
+                    <td>{{ user["purpose"] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">No users registered yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><a href="/admin-dashboard">Back to Admin Dashboard</a></p>
+    </div>
+</body>
+</html>

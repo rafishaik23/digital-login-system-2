@@ -2,10 +2,9 @@ from flask import Flask, render_template, request, redirect, session, flash
 import sqlite3
 from datetime import datetime
 import uuid
-import os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "my_secret_key")
+app.secret_key = "my_secret_key"
 
 
 # ---------------- DATABASE ----------------
@@ -83,6 +82,9 @@ def create_tables():
 
     if "purpose" not in log_columns:
         conn.execute("ALTER TABLE login_logs ADD COLUMN purpose TEXT")
+
+    if "work_done" not in log_columns:
+        conn.execute("ALTER TABLE login_logs ADD COLUMN work_done TEXT")
 
     conn.execute("""
         CREATE UNIQUE INDEX IF NOT EXISTS idx_users_checkin_id
@@ -224,7 +226,7 @@ def login():
         conn = get_db()
 
         user = conn.execute(
-            "SELECT * FROM users WHERE checkin_id = ?",
+            "SELECT * FROM users WHERE lower(checkin_id) = lower(?)",
             (checkin_id,)
         ).fetchone()
 
@@ -293,7 +295,7 @@ def logbook():
 
 # ---------------- LOGOUT ----------------
 
-@app.route("/logout")
+@app.route("/logout", methods=["GET", "POST"])
 def logout():
     if "user_id" in session:
         conn = get_db()
@@ -305,14 +307,19 @@ def logout():
             LIMIT 1
         """, (session["user_id"],)).fetchone()
 
+        if request.method == "GET":
+            conn.close()
+            return render_template("logout.html")
+
         if log:
             logout_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            work_done = request.form.get("work_done", "").strip()
 
             conn.execute("""
                 UPDATE login_logs
-                SET logout_time = ?
+                SET logout_time = ?, work_done = ?
                 WHERE id = ?
-            """, (logout_time, log["id"]))
+            """, (logout_time, work_done, log["id"]))
 
             conn.commit()
 
@@ -328,11 +335,7 @@ def logout():
 # The built-in Flask server is for local development only.
 # Production deployments should run the app through a WSGI server such as Gunicorn.
 
+create_tables()
+
 if __name__ == "__main__":
-    create_tables()
-    app.run(
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
-        debug=False,
-        use_reloader=False,
-    )
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)

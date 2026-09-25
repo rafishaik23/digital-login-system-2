@@ -1,61 +1,565 @@
+/* Apply to the complete page */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
     margin: 0;
-    padding: 40px;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
 }
 
-.container,
-.form-container {
-    background: white;
-    max-width: 600px;
-    margin: auto;
+
+/* Login and Registration Box */
+.login-container,
+.register-container {
+    width: 400px;
+    margin: 60px auto;
     padding: 30px;
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
+
+/* Headings */
 h1 {
     text-align: center;
+    color: #333;
 }
 
+h2 {
+    color: #333;
+}
+
+
+/* Labels */
 label {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
+
+/* Input fields */
 input,
-textarea,
-select {
+select,
+textarea {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
 }
 
+
+/* Textarea */
 textarea {
     height: 80px;
+    resize: none;
 }
 
+
+/* Buttons */
 button {
-    padding: 10px 20px;
-    margin: 15px 5px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
 }
 
+
+/* Button hover */
+button:hover {
+    background: #0056b3;
+}
+
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Messages */
+.message,
+.messages p {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* User login branding */
+.form-container {
+    width: min(420px, calc(100% - 32px));
+    margin: 48px auto;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #dfe8eb;
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(23, 35, 46, 0.12);
+}
+
+.login-brand {
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.login-brand img {
+    display: block;
+    width: min(280px, 100%);
+    height: auto;
+    margin: 0 auto;
+}
+
+.form-container h1 {
+    margin: 0 0 22px;
+    color: #17232e;
+}
+
+
+/* Dashboard */
+.dashboard-container {
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background: #007bff;
+    color: white;
 }
 
 th,
 td {
-    border: 1px solid #ccc;
-    padding: 10px;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f5f5f5;
+}
+
+/* Registration form */
+.register-page {
+    min-height: 100vh;
+    padding: 48px 20px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #eaf4f4 0%, #f7fafc 52%, #fff4e6 100%);
+    color: #17232e;
+}
+
+.register-card {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 42px 48px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #dfe8eb;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(23, 35, 46, 0.12);
+}
+
+.form-heading {
+    margin-bottom: 30px;
     text-align: center;
 }
 
-.message {
+.eyebrow {
+    margin: 0 0 10px;
+    color: #087f8c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.form-heading h1 {
+    margin: 0;
+    color: #17232e;
+    font-size: clamp(28px, 4vw, 38px);
+}
+
+.form-intro {
+    margin: 10px 0 0;
+    color: #63727d;
+}
+
+.registration-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 18px;
+}
+
+.field-group {
+    min-width: 0;
+}
+
+.field-group label,
+.field-group legend {
+    display: block;
+    margin: 0 0 8px;
+    color: #344653;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.field-group label span {
+    color: #84929b;
+    font-weight: 400;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+    border: 1px solid #ccd9de;
+    border-radius: 9px;
+    background: #fbfdfe;
+    color: #17232e;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.field-group input,
+.field-group select {
+    height: 46px;
+}
+
+.field-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+    color: #9aa8b0;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+    outline: none;
+    border-color: #087f8c;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.13);
+}
+
+.gender-group {
+    padding: 0;
+    border: 0;
+}
+
+.radio-options {
+    display: flex;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid #ccd9de;
+    border-radius: 9px;
+    background: #fbfdfe;
+    cursor: pointer;
+    font-weight: 500 !important;
+}
+
+.radio-option input {
+    width: auto;
+    accent-color: #087f8c;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.registration-form button {
+    margin-top: 2px;
+    border-radius: 9px;
+    background: #087f8c;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.registration-form button:hover {
+    background: #05626d;
+    transform: translateY(-1px);
+}
+
+.register-card > p:last-child {
+    margin: 26px 0 0;
+    color: #63727d;
     text-align: center;
-    font-weight: bold;
+}
+
+.register-card > p:last-child a {
+    color: #087f8c;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .register-page {
+        padding: 20px 12px;
+    }
+
+    .register-card {
+        padding: 30px 22px;
+        border-radius: 14px;
+    }
+
+    .registration-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .radio-options {
+        gap: 8px;
+    }
+}
+
+/* Admin login */
+.admin-login-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #102a43 0%, #176b87 52%, #d9f0ee 100%);
+}
+
+.admin-login-shell {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.admin-login-card {
+    width: min(430px, 100%);
+    padding: 42px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(8, 31, 48, 0.28);
+}
+
+.admin-login-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.admin-eyebrow {
+    margin: 0 0 10px;
+    color: #087f8c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.admin-login-header h1 {
+    margin: 0;
+    color: #17232e;
+    font-size: 34px;
+}
+
+.admin-login-header p:last-child {
+    margin: 10px 0 0;
+    color: #63727d;
+    line-height: 1.5;
+}
+
+.admin-login-form label {
+    display: block;
+    margin: 16px 0 8px;
+    color: #344653;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.admin-login-form input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    border: 1px solid #ccd9de;
+    border-radius: 9px;
+    background: #fbfdfe;
+    color: #17232e;
+}
+
+.admin-login-form input:focus {
+    outline: none;
+    border-color: #087f8c;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.13);
+}
+
+.admin-login-form button {
+    margin-top: 26px;
+    border-radius: 9px;
+    background: #087f8c;
+    font-weight: 700;
+}
+
+.admin-login-form button:hover {
+    background: #05626d;
+}
+
+.admin-message {
+    margin: 0 0 18px;
+    padding: 11px 13px;
+    border: 1px solid #f1c7c3;
+    border-radius: 8px;
+    background: #fff4f2;
+    color: #a33a32;
+    font-size: 14px;
+    text-align: center;
+}
+
+.admin-back-link {
+    display: block;
+    margin-top: 22px;
+    color: #087f8c;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media (max-width: 520px) {
+    .admin-login-shell {
+        padding: 16px;
+    }
+
+    .admin-login-card {
+        padding: 32px 24px;
+    }
+}
+
+/* Learner dashboard */
+.learning-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #102a43 0%, #176b87 52%, #d9f0ee 100%);
+}
+
+.learning-shell {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.learning-card {
+    width: min(680px, 100%);
+    padding: 58px 52px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(8, 31, 48, 0.28);
+    text-align: center;
+}
+
+.learning-eyebrow {
+    margin: 0 0 14px;
+    color: #087f8c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.learning-card h1 {
+    max-width: 520px;
+    margin: 0 auto;
+    color: #17232e;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.12;
+}
+
+.learning-intro {
+    max-width: 500px;
+    margin: 18px auto 0;
+    color: #63727d;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.start-learning-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 28px;
+    border-radius: 9px;
+    background: #087f8c;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.logbook-button:hover {
+    background: #05626d;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.logout-button:hover {
+    background: red;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.learning-actions {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 28px;
+}
+
+.learning-actions a {
+    color: #087f8c;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media (max-width: 520px) {
+    .learning-shell {
+        padding: 16px;
+    }
+
+    .learning-card {
+        padding: 42px 24px;
+    }
+
+    .learning-actions {
+        flex-direction: column;
+        gap: 14px;
+    }
 }

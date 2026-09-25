@@ -1,38 +1,55 @@
+
+
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="admin-login-page">
 
-    <h1>Admin Login</h1>
+<main class="admin-login-shell">
+    <section class="admin-login-card">
+        <div class="admin-login-header">
+            <p class="admin-eyebrow">Digital Logbook</p>
+            <h1>Admin Login</h1>
+            <p>Sign in to manage users and review logbook activity.</p>
+        </div>
 
-    {% if error %}
-        <h3>{{ error }}</h3>
-    {% endif %}
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="admin-message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
 
-    <form method="POST" action="{{ url_for('admin_login') }}">
+        {% if error %}
+            <p class="admin-message">{{ error }}</p>
+        {% endif %}
 
-        <label>Admin Username</label>
-        <input type="text"
-               name="username"
-               placeholder="Enter admin username"
-               required>
+        <form method="POST" action="{{ url_for('admin_login') }}" class="admin-login-form">
 
-        <br><br>
+            <label for="username">Admin Username</label>
+            <input type="text"
+                   id="username"
+                   name="username"
+                   placeholder="Enter admin username"
+                   required>
 
-        <label>Password</label>
-        <input type="password"
-               name="password"
-               placeholder="Enter password"
-               required>
+            <label for="password">Password</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   placeholder="Enter password"
+                   required>
 
-        <br><br>
+            <button type="submit">Sign in to dashboard</button>
+        </form>
 
-        <button type="submit">Login</button>
-
-    </form>
+        <a class="admin-back-link" href="{{ url_for('home') }}">Back to home</a>
+    </section>
+</main>
 
 </body>
 </html>

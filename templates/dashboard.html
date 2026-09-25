@@ -1,49 +1,31 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <title>Dashboard</title>
-
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<body
+class="learning-page">
+    <main class="learning-shell">
+        <section class="learning-card">
+            <p class="learning-eyebrow">Digital Learning Space</p>
+            
+            <h2>Welcome, {{ session['user_name'] }}</h2>
+            <p class="learning-intro">
+                You are signed in.
+            </p>
 
-<body>
+            <a class="start-learning" href="#learning-start">Start Learning</a>
 
-<div class="container">
-
-    <h1>Welcome, {{ user["name"] }} </h1>
-
-    <h2>Your Profile</h2>
-
-    <p><b>Name:</b> {{ user["name"] }}</p>
-
-    <p><b>Age:</b> {{ user["age"] }}</p>
-
-    <p><b>Gender:</b> {{ user["gender"] }}</p>
-
-    <p><b>Contact:</b> {{ user["contact"] }}</p>
-
-    <p><b>Address:</b> {{ user["address"] }}</p>
-
-    <p><b>Qualification:</b> {{ user["qualification"] }}</p>
-
-    <p><b>Purpose:</b> {{ user["purpose"] }}</p>
-
-    <hr>
-
-    <a href="/logbook">
-        <button>View Logbook</button>
-    </a>
-
-    <a href="/logout">
-        <button>Logout</button>
-    </a>
-
-</div>
-
+            <div id="learning-start" class="learning-actions">
+                <a class="logbook-button" href="/logbook">
+                    <button type="button">View Logbook</button>
+                </a>
+                <a class="logout-button" href="/logout">
+                    <button type="button">Logout</button>
+                </a>
+            </div>
+        </section>
+    </main>
 </body>
-
 </html>

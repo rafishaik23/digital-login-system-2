@@ -8,6 +8,10 @@
 
 <body>
 <div class="form-container">
+    <div class="login-brand">
+        <img src="{{ url_for('static', filename='swechalogo.png') }}"
+             alt="Swecha Andhra Pradesh logo">
+    </div>
     <h1>User Check-in</h1>
 
     {% with messages = get_flashed_messages() %}
@@ -22,7 +26,7 @@
             type="text"
             id="checkin_id"
             name="checkin_id"
-            placeholder="Example: USR-12AB34CD"
+            placeholder="Example: skc1"
             required
         >
 

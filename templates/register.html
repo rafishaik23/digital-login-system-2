@@ -1,67 +1,93 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>User Registration</title>
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+           href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="register-page">
 
-<div class="form-container">
+<main class="form-container register-card">
 
-    <h1>User Registration</h1>
+    <div class="form-heading">
+        <p class="eyebrow">Visitor Management</p>
+        <h1>Create your visitor profile</h1>
+        <p class="form-intro">Register once to receive your personal check-in ID.</p>
+    </div>
 
     {% if error %}
     <p class="message">{{ error }}</p>
     {% endif %}
 
-    <form method="POST">
+    <form method="POST" class="registration-form">
 
-        <label>Name</label>
-        <input type="text" name="name" required>
-
-        <label>Age</label>
-        <input type="number" name="age" required>
-
-        <label>Gender</label>
-
-        <div>
-            <input type="radio" name="gender" value="Male" required>
-            Male
-
-            <input type="radio" name="gender" value="Female">
-            Female
+        <div class="field-group">
+            <label for="name">Full name</label>
+            <input id="name" type="text" name="name" placeholder="Enter your full name" required>
         </div>
 
-        <label>Contact (Optional)</label>
-        <input type="text" name="contact">
+        <div class="field-group">
+            <label for="age">Age</label>
+            <input id="age" type="number" name="age" min="1" max="120" placeholder="Enter your age" required>
+        </div>
 
-        <label>Address</label>
-        <textarea name="address" required></textarea>
+        <fieldset class="field-group gender-group">
+            <legend>Gender</legend>
 
-        <label>Qualification</label>
+            <div class="radio-options">
+                <label class="radio-option">
+                    <input type="radio" name="gender" value="Male" required>
+                    <span>Male</span>
+                </label>
 
-        <select name="qualification" required>
+                <label class="radio-option">
+                    <input type="radio" name="gender" value="Female">
+                    <span>Female</span>
+                </label>
+            </div>
+        </fieldset>
 
-            <option value="">Select Qualification</option>
-            <option>School</option>
-            <option>Diploma</option>
-            <option>B.Tech</option>
-            <option>M.Tech</option>
-            <option>Degree</option>
-            <option>Other</option>
+        <div class="field-group">
+            <label for="contact">Contact <span>(optional)</span></label>
+            <input id="contact" type="text" name="contact" placeholder="Phone number">
+        </div>
 
-        </select>
+        <div class="field-group full-width">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" placeholder="Enter your complete address" required></textarea>
+        </div>
 
-        <label>Purpose</label>
-        <textarea name="purpose" required></textarea>
+        <div class="field-group">
+            <label for="qualification">Qualification</label>
 
-        <label>Email</label>
-        <input type="email" name="email" required>
+            <select id="qualification" name="qualification" required>
 
-        <button type="submit">Register</button>
+                <option value="">Select qualification</option>
+                <option>School</option>
+                <option>Diploma</option>
+                <option>B.Tech</option>
+                <option>M.Tech</option>
+                <option>Degree</option>
+                <option>Other</option>
+
+            </select>
+        </div>
+        <div class="purpose">
+            <label for="purpose">purpose <span>(optional)</span></label>
+            <input id="purpose" type="text" name="purpose" placeholder="purpose">
+        </div>
+
+       
+
+        <div class="field-group full-width">
+            <label for="email">Email address <span>(optional)</span></label>
+            <input id="email" type="email" name="email" placeholder="you@example.com">
+        </div>
+
+        <button type="submit" class="full-width">Create visitor profile</button>
 
     </form>
 
@@ -70,7 +96,7 @@
         <a href="/login">Login here</a>
     </p>
 
-</div>
+</main>
 
 </body>
 

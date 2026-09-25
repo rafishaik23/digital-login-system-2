@@ -17,6 +17,7 @@
                     <th>Login Time</th>
                     <th>Logout Time</th>
                     <th>Purpose</th>
+                    <th>Work Completed</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,10 +29,11 @@
                     <td>{{ log["login_time"] }}</td>
                     <td>{{ log["logout_time"] or 'Still logged in' }}</td>
                     <td>{{ log["purpose"] or 'N/A' }}</td>
+                    <td>{{ log["work_done"] or 'N/A' }}</td>
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="6">No log entries found.</td>
+                    <td colspan="7">No log entries found.</td>
                 </tr>
                 {% endfor %}
             </tbody>

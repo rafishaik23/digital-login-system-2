@@ -335,7 +335,6 @@ def logout():
 # The built-in Flask server is for local development only.
 # Production deployments should run the app through a WSGI server such as Gunicorn.
 
-create_tables()
-
 if __name__ == "__main__":
+    create_tables()
     app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)

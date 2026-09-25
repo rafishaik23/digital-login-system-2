@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="form-container">
+    <h1>Complete Your Visit</h1>
+    <p> Post your learnings.</p>
+
+    <form method="POST" action="{{ url_for('logout') }}">
+        <label for="work_done">Work completed</label>
+        <textarea id="work_done" name="work_done" rows="5" placeholder="Describe the work you completed" required></textarea>
+        <button type="submit">Logout</button>
+    </form>
+
+    <a href="{{ url_for('dashboard') }}">
+        <button type="button">Back to Dashboard</button>
+    </a>
+</div>
+</body>
+</html>

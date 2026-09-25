@@ -21,6 +21,8 @@
     <table>
 
         <tr>
+            <th>Purpose</th>
+            <th>Work Completed</th>
             <th>Login Time</th>
             <th>Logout Time</th>
             <th>Status</th>
@@ -29,6 +31,10 @@
         {% for log in logs %}
 
         <tr>
+
+            <td>{{ log["purpose"] or "-" }}</td>
+
+            <td>{{ log["work_done"] or "-" }}</td>
 
             <td>
                 {{ log["login_time"] }}

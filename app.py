@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, redirect, session, flash
 import sqlite3
 from datetime import datetime
 import uuid
+import os
 
 app = Flask(__name__)
-app.secret_key = "my_secret_key"
+app.secret_key = os.environ.get("SECRET_KEY", "my_secret_key")
 
 
 # ---------------- DATABASE ----------------
@@ -329,4 +330,9 @@ def logout():
 
 if __name__ == "__main__":
     create_tables()
-    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=False,
+        use_reloader=False,
+    )

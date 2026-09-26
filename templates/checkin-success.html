@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Check-in Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="form-container checkin-success-card" role="status">
+        <div class="login-brand">
+            <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                 alt="Swecha Andhra Pradesh logo">
+        </div>
+
+        <h1><span class="success-check" aria-hidden="true">&#10003;</span>Check-in Successful</h1>
+        <p class="checkin-success-welcome">Welcome to Swecha Knowledge Center!</p>
+
+        <div class="checkin-confirmation">
+            <p>Check-in ID: <strong>{{ checkin.checkin_id }}</strong></p>
+            <p>Check-in time: <strong>{{ checkin.checkin_time }}</strong></p>
+        </div>
+
+        <p class="checkin-success-active">Your visit is now active.</p>
+        <nav class="home-actions checkin-success-actions checkin-success-action" aria-label="Visit actions">
+                <a class="home-action home-action-primary"
+                    href="{{ url_for('dashboard', visit_token=visit_token) }}">Continue to Visit</a>
+                <a class="home-action home-action-primary"
+                    href="{{ url_for('login') }}" target="_blank" rel="noopener">Another Visitor Check-in</a>
+          </nav>
+    </main>
+</body>
+
+</html>

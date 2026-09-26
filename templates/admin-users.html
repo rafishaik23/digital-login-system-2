@@ -5,42 +5,49 @@
     <title>Admin Users</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <div class="container">
-        <h1>Registered Users</h1>
+<body class="admin-page">
+        <main class="admin-shell admin-shell-wide">
+            <section class="admin-panel admin-panel-wide">
+                <div class="login-brand">
+                        <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                                 alt="Swecha Andhra Pradesh logo">
+                </div>
+                <p class="admin-eyebrow">Swecha Knowledge Center</p>
+                <h1>Registered Users</h1>
 
-        <table>
+                <div class="admin-table-wrap">
+                <table class="admin-table">
             <thead>
                 <tr>
+                    <th>Name</th>
                     <th>ID</th>
                     <th>Check-in ID</th>
-                    <th>Name</th>
                     <th>Age</th>
                     <th>Gender</th>
                     <th>Email</th>
-                    <th>Purpose</th>
                 </tr>
             </thead>
             <tbody>
                 {% for user in users %}
                 <tr>
+                    <td>{{ user["name"] }}</td>
                     <td>{{ user["id"] }}</td>
                     <td>{{ user["checkin_id"] }}</td>
-                    <td>{{ user["name"] }}</td>
                     <td>{{ user["age"] }}</td>
                     <td>{{ user["gender"] }}</td>
-                    <td>{{ user["email"] }}</td>
-                    <td>{{ user["purpose"] }}</td>
+                    <td>{{ user.get("email", "N/A") }}</td>
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="7">No users registered yet.</td>
+                    <td colspan="6">No users registered yet.</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+                </div>
 
-        <p><a href="/admin-dashboard">Back to Admin Dashboard</a></p>
-    </div>
+                <a class="admin-back-link" href="{{ url_for('admin_dashboard') }}">Back to Admin Dashboard</a>
+            </section>
+        </main>
 </body>
 </html>

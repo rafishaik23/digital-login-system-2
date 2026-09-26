@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>User Login</title>
+    <title>Visitor Check-in</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -12,7 +12,8 @@
         <img src="{{ url_for('static', filename='swechalogo.png') }}"
              alt="Swecha Andhra Pradesh logo">
     </div>
-    <h1>User Check-in</h1>
+    <h1>Visitor Check-in</h1>
+    <p class="form-intro">Enter your Check-in ID to start your visit.</p>
 
     {% with messages = get_flashed_messages() %}
         {% for message in messages %}
@@ -21,16 +22,17 @@
     {% endwith %}
 
     <form method="POST">
-        <label for="checkin_id">Check-in ID</label>
+        <label for="checkin_id">Check-in ID *</label>
         <input
             type="text"
             id="checkin_id"
             name="checkin_id"
-            placeholder="Example: skc1"
+            placeholder="Enter your Check-in ID"
+            value="{{ checkin_id }}"
             required
         >
 
-        <label for="purpose">Purpose</label>
+        <label for="purpose">Purpose of Visit</label>
         <input
             type="text"
             id="purpose"

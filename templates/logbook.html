@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Digital Logbook</title>
+    <title>Your Visit Logbook</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
@@ -13,18 +13,22 @@
 
 <body>
 
-<div class="container">
+<main class="container visitor-logbook">
+    <div class="login-brand">
+        <img src="{{ url_for('static', filename='swechalogo.png') }}"
+             alt="Swecha Andhra Pradesh logo">
+    </div>
 
-    <h1>Digital Logbook</h1>
-    <h2> Log book - {{user_name}}</h2>
+    <h1>Your Visit Logbook</h1>
+    <h2>Visit history for {{ user_name }}</h2>
 
-    <table>
+    <table class="visitor-logbook-table">
 
         <tr>
-            <th>Purpose</th>
-            <th>Work Completed</th>
-            <th>Login Time</th>
-            <th>Logout Time</th>
+            <th>Purpose of Visit</th>
+            <th>Work / Learning Completed</th>
+            <th>Check-in Time</th>
+            <th>Check-out Time</th>
             <th>Status</th>
         </tr>
 
@@ -47,7 +51,7 @@
             <td>
 
                 {% if log["logout_time"] %}
-                    Logged Out
+                    Checked Out
                 {% else %}
                     Active
                 {% endif %}
@@ -55,21 +59,20 @@
             </td>
 
         </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No visits recorded yet.</td>
+        </tr>
 
         {% endfor %}
 
     </table>
 
-    <br>
-
-    <a href="/dashboard">
-        <button type="button">Back to Dashboard</button>
-    </a>
-    <a href="/logout">
-        <button type="button">Logout</button>
-    </a>
-
-</div>
+    <nav class="logbook-navigation" aria-label="Visit actions">
+        <a class="home-action home-action-secondary" href="{{ url_for('dashboard', visit_token=visit_token) }}">Back to Dashboard</a>
+        <a class="home-action home-action-primary" href="{{ url_for('logout', visit_token=visit_token) }}">Check Out</a>
+    </nav>
+</main>
 
 </body>
 

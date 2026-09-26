@@ -3,33 +3,43 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Swecha Knowledge Center | Visitor Logbook</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="home-page">
+    <main class="home-panel">
+        <div class="home-logo">
+            <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                 alt="Swecha Andhra Pradesh logo">
+        </div>
 
-<div class="form-container">
+        <p class="home-organization">Swecha Knowledge Center</p>
+        <h1>Digital Visitor Logbook</h1>
 
-   <h1>Digital Logbook</h1>
+        <nav class="home-actions" aria-label="Choose an action">
+            <a class="home-action home-action-primary"
+               href="{{ url_for('login') }}">Visitor Check-in</a>
+            <a class="home-action home-action-secondary"
+               href="{{ url_for('admin_login') }}">Admin Login</a>
+        </nav>
 
-<a href="{{ url_for('login') }}">
-    <button>User Login</button>
-</a>
+        <p class="home-register">
+            New visitor?
+            <a href="{{ url_for('register') }}">Register here</a>
+        </p>
 
-<a href="/admin-login">
-    <button>Admin Login</button>
-</a>
-
-    <p>
-        New user?
-        <a href="{{ url_for('register') }}">Register here</a>
-    </p>
-   
-
-</div>
+        <section class="home-tribute" aria-labelledby="tribute-title">
+            <p class="tribute-date">28 September · Birth Anniversary</p>
+            <h2 id="tribute-title">Remembering Bhagat Singh</h2>
+            <blockquote>
+                Any man who stands for progress has to criticize, disbelieve and challenge every item of the old faith.
+            </blockquote>
+            <p class="tribute-attribution"> - Bhagat Singh</p>
+        </section>
+    </main>
 
 </body>
 

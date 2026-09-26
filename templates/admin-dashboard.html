@@ -3,34 +3,28 @@
 
 <head>
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="admin-page">
+    <main class="admin-shell">
+        <section class="admin-panel">
+            <div class="login-brand">
+                <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                     alt="Swecha Andhra Pradesh logo">
+            </div>
+            <p class="admin-eyebrow">Swecha Knowledge Center</p>
+            <h1>Admin Dashboard</h1>
+            <p class="admin-dashboard-intro">Manage visitor profiles and review check-in activity.</p>
 
-    <h1>Admin Dashboard</h1>
+            <nav class="admin-dashboard-actions" aria-label="Administration">
+                <a class="home-action home-action-primary" href="{{ url_for('admin_users') }}">View Users</a>
+                <a class="home-action home-action-primary" href="{{ url_for('admin_logbook') }}">View Logbook Entries</a>
+            </nav>
 
-    <h2>Welcome, Admin!</h2>
-
-    <hr>
-
-    <h3>Digital Logbook Management</h3>
-    <a href="/admin/users">
-        <button>View Users</button>
-    </a>
-    <a href="/admin/logbook">
-        <button>View Logbook Entries</button>
-    </a>
-
-    <a href="/admin/manage-users">
-        <button>Manage Users</button>
-    </a>
-
-    <br><br>
-
-    <a href="/admin-logout">
-        <button>Logout</button>
-    </a>
-
+            <a class="admin-back-link admin-dashboard-logout" href="{{ url_for('admin_logout') }}">Log Out</a>
+        </section>
+    </main>
 </body>
 
 </html>

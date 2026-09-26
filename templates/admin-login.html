@@ -12,6 +12,10 @@
 
 <main class="admin-login-shell">
     <section class="admin-login-card">
+        <div class="login-brand">
+            <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                 alt="Swecha Andhra Pradesh logo">
+        </div>
         <div class="admin-login-header">
             <p class="admin-eyebrow">Digital Logbook</p>
             <h1>Admin Login</h1>
@@ -20,7 +24,9 @@
 
         {% with messages = get_flashed_messages() %}
             {% for message in messages %}
+                {% if message != "You have checked out. Enter your Check-in ID to start another visit." %}
                 <p class="admin-message">{{ message }}</p>
+                {% endif %}
             {% endfor %}
         {% endwith %}
 

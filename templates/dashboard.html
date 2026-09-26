@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Active Visit | Digital Visitor Logbook</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body
 class="learning-page">
     <main class="learning-shell">
         <section class="learning-card">
-            <p class="learning-eyebrow">Digital Learning Space</p>
-            
-            <h2>Welcome, {{ session['user_name'] }}</h2>
-            <p class="learning-intro">
-                You are signed in.
-            </p>
-
-            <a class="start-learning" href="#learning-start">Start Learning</a>
-
-            <div id="learning-start" class="learning-actions">
-                <a class="logbook-button" href="/logbook">
-                    <button type="button">View Logbook</button>
-                </a>
-                <a class="logout-button" href="/logout">
-                    <button type="button">Logout</button>
-                </a>
+            <div class="login-brand">
+                <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                     alt="Swecha Andhra Pradesh logo">
             </div>
+            <p class="learning-eyebrow">Digital Visitor Logbook</p>
+            <h1>Welcome, {{ user["name"] }} <span class="visitor-checkin-id">({{ user["checkin_id"] }})</span></h1>
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <p class="message visitor-active-message" role="status">{{ message }}</p>
+                {% endfor %}
+            {% endwith %}
+            <p class="learning-intro">Your visit is active. Check out when you are ready to leave.</p>
+
+            <nav class="learning-actions" aria-label="Visit actions">
+                <a class="logbook-button" href="{{ url_for('logbook', visit_token=visit_token) }}">View Logbook</a>
+                <a class="logout-button" href="{{ url_for('logout', visit_token=visit_token) }}">Check Out</a>
+                <a class="home-action-primary" href="{{ url_for('login') }}" target="_blank" rel="noopener">Another Visitor Check-in</a>
+            </nav>
         </section>
     </main>
 </body>

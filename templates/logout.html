@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Logout</title>
+    <title>Complete Your Visit</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <div class="form-container">
+    <div class="login-brand">
+        <img src="{{ url_for('static', filename='swechalogo.png') }}"
+             alt="Swecha Andhra Pradesh logo">
+    </div>
+
     <h1>Complete Your Visit</h1>
-    <p> Post your learnings.</p>
+    <p class="form-intro">Before leaving, please record what you worked on or learned.</p>
 
     <form method="POST" action="{{ url_for('logout') }}">
-        <label for="work_done">Work completed</label>
-        <textarea id="work_done" name="work_done" rows="5" placeholder="Describe the work you completed" required></textarea>
-        <button type="submit">Logout</button>
+        {% if visit_token %}
+        <input type="hidden" name="visit_token" value="{{ visit_token }}">
+        {% endif %}
+        <label for="work_done">Work / Learning Completed</label>
+        <textarea id="work_done" name="work_done" rows="5" placeholder="Describe your work or learning" required></textarea>
+        <button type="submit">Check Out</button>
     </form>
-
-    <a href="{{ url_for('dashboard') }}">
-        <button type="button">Back to Dashboard</button>
-    </a>
 </div>
 </body>
 </html>

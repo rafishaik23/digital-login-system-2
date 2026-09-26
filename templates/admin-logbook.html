@@ -4,11 +4,18 @@
     <title>Admin Logbook</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <div class="container">
-        <h1>All User Log Entries</h1>
+<body class="admin-page">
+        <main class="admin-shell admin-shell-wide">
+            <section class="admin-panel admin-panel-wide">
+                <div class="login-brand">
+                        <img src="{{ url_for('static', filename='swechalogo.png') }}"
+                                 alt="Swecha Andhra Pradesh logo">
+                </div>
+                <p class="admin-eyebrow">Swecha Knowledge Center</p>
+                <h1>All Visitor Log Entries</h1>
 
-        <table>
+                <div class="admin-table-wrap">
+                <table class="admin-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -27,7 +34,7 @@
                     <td>{{ log["checkin_id"] }}</td>
                     <td>{{ log["name"] }}</td>
                     <td>{{ log["login_time"] }}</td>
-                    <td>{{ log["logout_time"] or 'Still logged in' }}</td>
+                    <td>{{ log["logout_time"] or 'Still checked in' }}</td>
                     <td>{{ log["purpose"] or 'N/A' }}</td>
                     <td>{{ log["work_done"] or 'N/A' }}</td>
                 </tr>
@@ -38,8 +45,10 @@
                 {% endfor %}
             </tbody>
         </table>
+                </div>
 
-        <p><a href="/admin-dashboard">Back to Admin Dashboard</a></p>
-    </div>
+                <a class="admin-back-link" href="{{ url_for('admin_dashboard') }}">Back to Admin Dashboard</a>
+            </section>
+        </main>
 </body>
 </html>
